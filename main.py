@@ -1,5 +1,14 @@
+# Third-party Imports
+import dash
+import dash_html_components as html
+import dash_core_components as dcc
+import plotly.graph_objects as go
+import plotly.express as px
+
+# Initializations
 app = dash.Dash()   #initialising dash app
 df = px.data.stocks() #reading stock price dataset
+
 
 def stock_prices():
     # Function for creating line chart showing Google stock prices over time
