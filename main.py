@@ -21,3 +21,6 @@ app.layout = html.Div(id = 'parent', children = [
         dcc.Graph(id = 'line_plot', figure = stock_prices())
     ]
                      )
+
+if __name__ == '__main__':
+    app.run_server()
