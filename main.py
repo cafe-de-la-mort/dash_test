@@ -10,10 +10,22 @@ app = dash.Dash()   #initialising dash app
 df = px.data.stocks() #reading stock price dataset
 
 
-def stock_prices():
+def goog_stock_prices():
     # Function for creating line chart showing Google stock prices over time
     fig = go.Figure([go.Scatter(x = df['date'], y = df['GOOG'],\
                      line = dict(color = 'firebrick', width = 4), name = 'Google')
+                     ])
+    fig.update_layout(title = 'Prices over time',
+                      xaxis_title = 'Dates',
+                      yaxis_title = 'Prices'
+                      )
+    return fig
+
+
+def aapl_stock_prices():
+    # Function for creating line chart showing Google stock prices over time
+    fig = go.Figure([go.Scatter(x = df['date'], y = df['AAPL'],\
+                     line = dict(color = 'blue', width = 4), name = 'Apple')
                      ])
     fig.update_layout(title = 'Prices over time',
                       xaxis_title = 'Dates',
@@ -27,7 +39,9 @@ app.layout = html.Div(id = 'parent', children = [
                                             'marginTop':40,'marginBottom':40}),
 
 
-        dcc.Graph(id = 'line_plot', figure = stock_prices())
+        dcc.Graph(id = 'goog_line_plot', figure = goog_stock_prices()),
+
+        dcc.Graph(id = 'aapl_line_plot', figure = aapl_stock_prices())
     ]
                      )
 
